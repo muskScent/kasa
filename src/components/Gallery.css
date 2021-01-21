@@ -1,0 +1,10 @@
+.gallery {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  min-height: 500px;
+  padding: 40px;
+  background: #f7f7f7;
+  border-radius: 25px;
+  margin-top: 35px;
+}

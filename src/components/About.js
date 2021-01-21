@@ -3,6 +3,6 @@ import "./About.css";
 
 export default class About extends Component {
   render() {
-    return <h1>ABOUT</h1>;
+    return <div className="container">ABOUT</div>;
   }
 }

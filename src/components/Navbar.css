@@ -7,6 +7,7 @@ nav {
 
 .logo {
   width: 130px;
+  cursor: pointer;
 }
 
 .nav__links {
