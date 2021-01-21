@@ -1,0 +1,12 @@
+.not-found a {
+  text-align: center;
+  color: inherit;
+}
+
+.not-found-404 {
+  font-size: 12rem;
+}
+
+.back-home {
+  margin-top: 10rem;
+}
