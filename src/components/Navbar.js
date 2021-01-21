@@ -10,10 +10,14 @@ export default class Navbar extends React.Component {
         <div>
           <img src={LogoIcon} alt="logo" className="logo" />
         </div>
-        <div className="nav__links">
-          <a href="">Accueil</a>
-          <a href="">A Propos</a>
-        </div>
+        <ul className="nav__links">
+          <li>
+            <a href="">Accueil</a>
+          </li>
+          <li>
+            <a href="">A Propos</a>
+          </li>
+        </ul>
       </nav>
     );
   }
