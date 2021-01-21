@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-
 import "./Navbar.css";
 import LogoIcon from "../assets/logo.svg";
+import { Link } from "react-router-dom";
 
 export default class Navbar extends Component {
   render() {
@@ -12,10 +12,10 @@ export default class Navbar extends Component {
         </div>
         <ul className="nav__links">
           <li>
-            <a href="">Accueil</a>
+            <Link to="/">Accueil</Link>
           </li>
           <li>
-            <a href="">A Propos</a>
+            <Link to="/card">A Propos</Link>
           </li>
         </ul>
       </nav>
