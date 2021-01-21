@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export default class Navbar extends Component {
   render() {
     return (
-      <nav>
+      <nav className="container">
         <div>
           <img src={LogoIcon} alt="logo" className="logo" />
         </div>

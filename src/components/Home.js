@@ -1,7 +1,12 @@
 import React, { Component } from "react";
+import "./Home.css";
 
 export default class Home extends Component {
   render() {
-    return <h1>HOME</h1>;
+    return (
+      <div className="container">
+        <div className="slogan">Chez vous, partout et ailleurs</div>
+      </div>
+    );
   }
 }
