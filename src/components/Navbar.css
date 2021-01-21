@@ -1,0 +1,21 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+}
+
+.logo {
+  width: 130px;
+}
+
+.nav__links {
+  display: flex;
+  justify-content: space-between;
+  width: 150px;
+}
+
+.nav__links a {
+  text-decoration: none;
+  color: inherit;
+}
