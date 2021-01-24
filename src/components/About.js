@@ -36,6 +36,7 @@ export default class About extends Component {
           {this.state.accordions.map((o) => (
             <Accordion title={o.title} content={o.content} />
           ))}
+          <div className="blank"></div>
         </div>
       </div>
     );
