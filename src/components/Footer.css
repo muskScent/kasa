@@ -2,10 +2,11 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 70px 30px 30px 30px;
+  padding: 60px 30px 30px 30px;
   background-color: #000;
   text-align: center;
   color: #fff;
+  height: 200px;
 }
 
 footer p {

@@ -11,8 +11,8 @@ import Footer from "./components/Footer";
 export default class App extends Component {
   render() {
     return (
-      <div>
-        <div className="container">
+      <div className="App">
+        <div className="main container">
           <Navbar />
           <Switch>
             <Route path="/" exact component={Home} />

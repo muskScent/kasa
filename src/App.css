@@ -1,4 +1,11 @@
+.App {
+}
+
 .container {
   width: 80%;
   margin: 0 auto;
+}
+
+.main {
+  min-height: calc(100vh - 200px);
 }

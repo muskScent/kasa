@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Navbar.css";
-import LogoIcon from "../assets/logo.svg";
 import { Link } from "react-router-dom";
+import Logo from "./Logo";
 
 export default class Navbar extends Component {
   render() {
@@ -9,7 +9,7 @@ export default class Navbar extends Component {
       <nav className="container">
         <div>
           <Link to="/">
-            <img src={LogoIcon} alt="logo" className="logo" />
+            <Logo color="#ff6060" />
           </Link>
         </div>
         <ul className="nav__links">
