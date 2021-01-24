@@ -1,0 +1,25 @@
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 70px 30px 30px 30px;
+  background-color: #000;
+  text-align: center;
+  color: #fff;
+}
+
+footer p {
+  font-size: 1.1rem;
+}
+
+.rights {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+}
+
+svg {
+  cursor: pointer;
+}

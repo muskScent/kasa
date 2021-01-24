@@ -6,6 +6,7 @@ import Card from "./components/Card";
 import About from "./components/About";
 import { Route, Switch, Redirect } from "react-router-dom";
 import NotFound from "./components/NotFound";
+import Footer from "./components/Footer";
 
 export default class App extends Component {
   render() {
@@ -20,6 +21,7 @@ export default class App extends Component {
             <Redirect from="*" to="/404" />
           </Switch>
         </div>
+        <Footer />
       </div>
     );
   }
