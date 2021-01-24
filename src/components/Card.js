@@ -1,7 +1,12 @@
 import React, { Component } from "react";
+import Slider from "./Slider";
 
 export default class Card extends Component {
   render() {
-    return <h1>CARD</h1>;
+    return (
+      <div>
+        <Slider />
+      </div>
+    );
   }
 }

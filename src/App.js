@@ -6,6 +6,7 @@ import About from "./components/About";
 import { Route, Switch, Redirect } from "react-router-dom";
 import NotFound from "./components/NotFound";
 import Footer from "./components/Footer";
+import Card from "./components/Card";
 
 export default class App extends Component {
   render() {
@@ -16,6 +17,7 @@ export default class App extends Component {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/about" component={About} />
+            <Route path="/card" component={Card} />
             <Route path="/404" component={NotFound} />
             <Redirect from="*" to="/404" />
           </Switch>
