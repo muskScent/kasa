@@ -21,15 +21,15 @@ export default class Accordion extends Component {
           <p>{this.props.title}</p>
           <img
             src={`${isActive ? DownArrow : UpArrow}`}
-            alt="up-arrow"
+            alt={`${isActive ? "down-arrow" : "up-arrow"}`}
             className="arrow"
           />
         </div>
-        {isActive ? (
+        {isActive && (
           <div className="panel">
             <p>{this.props.content}</p>
           </div>
-        ) : null}
+        )}
       </div>
     );
   }
