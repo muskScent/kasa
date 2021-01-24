@@ -25,11 +25,9 @@ export default class Accordion extends Component {
             className="arrow"
           />
         </div>
-        {isActive && (
-          <div className="panel">
-            <p>{this.props.content}</p>
-          </div>
-        )}
+        <div className={`panel ${isActive ? "active" : ""}`}>
+          <p>{this.props.content}</p>
+        </div>
       </div>
     );
   }

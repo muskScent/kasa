@@ -27,9 +27,15 @@
   position: relative;
   top: -5px;
   z-index: -1;
-  padding: 15px 12px 8px 12px;
   background: #f7f7f7;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  /* overflow: hidden; */
+  height: 0;
+  overflow: hidden;
+  transition: 500ms;
+}
+
+.active {
+  padding: 15px 12px 8px 12px;
+  height: auto;
 }
