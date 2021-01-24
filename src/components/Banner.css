@@ -1,0 +1,11 @@
+.banner {
+  /* background-image: url("../assets/images/moutains.png"); */
+  background-size: cover;
+  height: 170px;
+  border-radius: 20px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 170px;
+  font-size: 2.5rem;
+  color: #fff;
+}

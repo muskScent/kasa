@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./About.css";
 import Accordion from "./Accordion";
+import Banner from "./Banner";
 
 export default class About extends Component {
   state = {
@@ -29,10 +30,13 @@ export default class About extends Component {
   };
   render() {
     return (
-      <div className="container">
-        {this.state.accordions.map((o) => (
-          <Accordion title={o.title} content={o.content} />
-        ))}
+      <div>
+        <div className="container">
+          <Banner image="../assets/images/moutains.png" />
+          {this.state.accordions.map((o) => (
+            <Accordion title={o.title} content={o.content} />
+          ))}
+        </div>
       </div>
     );
   }
