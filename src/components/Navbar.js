@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Logo from "./Logo";
 
 export default class Navbar extends Component {
@@ -14,10 +14,14 @@ export default class Navbar extends Component {
         </div>
         <ul className="nav__links">
           <li>
-            <Link to="/">Accueil</Link>
+            <NavLink to="/" exact={true} activeClassName="is-active">
+              Accueil
+            </NavLink>
           </li>
           <li>
-            <Link to="/about">A Propos</Link>
+            <NavLink to="/about" exact={true} activeClassName="is-active">
+              A Propos
+            </NavLink>
           </li>
         </ul>
       </nav>
