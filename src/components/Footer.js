@@ -6,7 +6,7 @@ export default class Footer extends Component {
   render() {
     return (
       <footer>
-        <div class="rights">
+        <div className="rights">
           <Logo color="#fff" />
           <p>© 2020 Kasa. All rights reserved</p>
         </div>
