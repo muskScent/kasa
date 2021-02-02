@@ -6,11 +6,13 @@
 
 .slider img {
   width: 100%;
+  object-fit: scale-down;
 }
 
 .slider-container {
   position: relative;
   width: 640px;
+  height: 427px;
   margin: 0 auto;
   overflow: hidden;
   border-radius: 25px;
@@ -19,6 +21,13 @@
 .slider {
   display: flex;
   width: 100%;
+}
+
+.slider-indicator {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  color: #fff;
 }
 
 .slider-button {

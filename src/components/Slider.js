@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import RentData from "../data/data.json";
 import LeftArrow from "../assets/images/left-arrow.svg";
 import RightArrow from "../assets/images/right-arrow.svg";
 import "./Slider.css";
@@ -12,73 +13,89 @@ export default class Slider extends Component {
   state = {
     currentIndex: 1,
     imageSize: 640,
-    images: [
-      "../assets/images/slide-1.jpg",
-      "../assets/images/slide-2.jpg",
-      "../assets/images/slide-3.jpg",
-      "../assets/images/slide-4.jpg",
-      "../assets/images/slide-5.jpg",
-    ],
+    images: [],
   };
 
   componentDidMount() {
-    this.slider.current.style.transform =
-      "translateX(" + -this.state.imageSize * this.state.currentIndex + "px)";
+    this.setState(
+      {
+        images: RentData.filter((o) => o.id === this.props.id).map(
+          (o) => o.pictures
+        )[0],
+      },
+      () => {
+        this.goTo(1);
+      }
+    );
   }
 
   prevSlide = () => {
     if (this.state.currentIndex <= 0) return;
     this.slider.current.style.transition = "transform 0.4s ease-in-out";
-    this.state.currentIndex--;
-    this.slider.current.style.transform =
-      "translateX(" + -this.state.imageSize * this.state.currentIndex + "px)";
-    console.log(this.state.currentIndex);
+    this.setState({ currentIndex: this.state.currentIndex - 1 }, () =>
+      this.goTo(this.state.currentIndex)
+    );
   };
 
   nextSlide = () => {
     if (this.state.currentIndex > this.state.images.length) return;
     this.slider.current.style.transition = "transform 0.4s ease-in-out";
-    this.state.currentIndex++;
-    this.slider.current.style.transform =
-      "translateX(" + -this.state.imageSize * this.state.currentIndex + "px)";
-    console.log(this.state.currentIndex);
+    this.setState({ currentIndex: this.state.currentIndex + 1 }, () =>
+      this.goTo(this.state.currentIndex)
+    );
   };
 
   handleSliderLoop = () => {
     if (this.state.currentIndex === 0) {
       this.slider.current.style.transition = "none";
-      this.state.currentIndex = this.state.images.length;
-      this.slider.current.style.transform =
-        "translateX(" + -this.state.imageSize * this.state.currentIndex + "px)";
+      this.setState({ currentIndex: this.state.images.length }, () =>
+        this.goTo(this.state.currentIndex)
+      );
     }
 
     if (this.state.currentIndex > this.state.images.length) {
       this.slider.current.style.transition = "none";
-      this.state.currentIndex = 1;
-      this.slider.current.style.transform =
-        "translateX(" + -this.state.imageSize * this.state.currentIndex + "px)";
+      this.setState({ currentIndex: 1 }, () =>
+        this.goTo(this.state.currentIndex)
+      );
     }
+  };
+
+  goTo = (index) => {
+    this.slider.current.style.transform =
+      "translateX(" + -this.state.imageSize * index + "px)";
+  };
+
+  getCurrentSlideIndex = () => {
+    return this.state.currentIndex < 1 ||
+      this.state.currentIndex > this.state.images.length
+      ? 1
+      : this.state.currentIndex;
   };
 
   render() {
     return (
       <>
         <div className="slider-container">
-          <img
-            src={LeftArrow}
-            alt="left-arrow"
-            className="slider-button"
-            id="prevBtn"
-            onClick={this.prevSlide}
-          />
-          <img
-            src={RightArrow}
-            alt="right-arrow"
-            className="slider-button"
-            id="nextBtn"
-            onClick={this.nextSlide}
-          />
-
+          {this.state.images.length > 1 && (
+            <>
+              {" "}
+              <img
+                src={LeftArrow}
+                alt="left-arrow"
+                className="slider-button"
+                id="prevBtn"
+                onClick={this.prevSlide}
+              />
+              <img
+                src={RightArrow}
+                alt="right-arrow"
+                className="slider-button"
+                id="nextBtn"
+                onClick={this.nextSlide}
+              />
+            </>
+          )}
           <div
             className="slider"
             ref={this.slider}
@@ -89,11 +106,14 @@ export default class Slider extends Component {
               id="lastClone"
               alt="sliderImage"
             />
-            {this.state.images.map((image) => (
-              <img src={image} alt="sliderImage" />
+            {this.state.images.map((image, index) => (
+              <img src={image} alt="sliderImage" key={index} />
             ))}
             <img src={this.state.images[0]} id="firstClone" alt="sliderImage" />
           </div>
+          <span className="slider-indicator">
+            {this.getCurrentSlideIndex()}/{this.state.images.length}
+          </span>
         </div>
       </>
     );
