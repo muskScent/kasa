@@ -7,12 +7,12 @@ import "./Slider.css";
 export default class Slider extends Component {
   constructor(props) {
     super(props);
+    this.sliderContainer = React.createRef();
     this.slider = React.createRef();
   }
 
   state = {
     currentIndex: 1,
-    imageSize: 640,
     images: [],
   };
 
@@ -45,7 +45,7 @@ export default class Slider extends Component {
     );
   };
 
-  handleSliderLoop = () => {
+  handleLoop = () => {
     if (this.state.currentIndex === 0) {
       this.slider.current.style.transition = "none";
       this.setState({ currentIndex: this.state.images.length }, () =>
@@ -62,8 +62,9 @@ export default class Slider extends Component {
   };
 
   goTo = (index) => {
+    console.log("Container width: ", this.sliderContainer.current.style.width);
     this.slider.current.style.transform =
-      "translateX(" + -this.state.imageSize * index + "px)";
+      "translateX(" + -this.sliderContainer.current.offsetWidth * index + "px)";
   };
 
   getCurrentSlideIndex = () => {
@@ -76,10 +77,9 @@ export default class Slider extends Component {
   render() {
     return (
       <>
-        <div className="slider-container">
+        <div className="slider-container" ref={this.sliderContainer}>
           {this.state.images.length > 1 && (
             <>
-              {" "}
               <img
                 src={LeftArrow}
                 alt="left-arrow"
@@ -99,7 +99,7 @@ export default class Slider extends Component {
           <div
             className="slider"
             ref={this.slider}
-            onTransitionEnd={this.handleSliderLoop}
+            onTransitionEnd={this.handleLoop}
           >
             <img
               src={this.state.images[this.state.images.length - 1]}
