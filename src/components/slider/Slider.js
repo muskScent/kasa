@@ -22,6 +22,7 @@ export default class Slider extends Component {
       slideWidth: this.slider.current.offsetWidth,
     });
     this.slider.current.addEventListener("resize", this.handleResize);
+    window.addEventListener("resize", this.handleResize);
   }
 
   handleResize = () => {
