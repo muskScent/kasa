@@ -8,8 +8,8 @@ export default class Gallery extends Component {
   render() {
     return (
       <div className="gallery">
-        {RentData.map((item) => (
-          <Link to={`/card/${item.id}`}>
+        {RentData.map((item, index) => (
+          <Link to={`/card/${item.id}`} key={index}>
             <RentItem title={item.title} />
           </Link>
         ))}

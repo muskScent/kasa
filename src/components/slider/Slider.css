@@ -1,0 +1,15 @@
+.slider {
+  position: relative;
+  height: 415px;
+  border-radius: 25px;
+  margin: 0 auto;
+  overflow: hidden;
+  color: red;
+}
+
+.slider-indicator {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  color: #fff;
+}

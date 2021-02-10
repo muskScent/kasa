@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import RentData from "../data/data.json";
-import Slider from "./Slider";
+import Slider from "./slider/Slider";
 
 export default class Card extends Component {
   componentDidMount() {
@@ -12,9 +12,12 @@ export default class Card extends Component {
   }
 
   render() {
+    const slides = RentData.filter(
+      (o) => o.id === this.props.match.params.id
+    ).map((o) => o.pictures)[0];
     return (
       <div className="container">
-        <Slider id={this.props.match.params.id} />
+        <Slider slides={slides} />
       </div>
     );
   }
