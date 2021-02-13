@@ -5,39 +5,17 @@ import "./Slider.css";
 import "./Arrow.css";
 
 export default class Arrow extends Component {
-  constructor(props) {
-    super(props);
-    this.arrow = React.createRef();
-    this.arrowImage = React.createRef();
-  }
-
-  componentDidMount() {
-    if (this.props.direction === "right") {
-      this.arrow.current.style.right = "25px";
-      this.arrowImage.current.style.transform = "translateX(2px)";
-    } else {
-      this.arrow.current.style.left = "25px";
-      this.arrowImage.current.style.transform = "translateX(-2px)";
-    }
-  }
   render() {
+    const rightArrowStyle = { right: "25px" };
+    const leftArrowStyle = { left: "25px" };
+    const [src, style] =
+      this.props.direction === "right"
+        ? [rightArrow, rightArrowStyle]
+        : [leftArrow, leftArrowStyle];
+
     return (
-      <div className="arrow" onClick={this.props.handleClick} ref={this.arrow}>
-        {this.props.direction === "right" ? (
-          <img
-            className="arrow-image"
-            src={rightArrow}
-            alt="right-arrow"
-            ref={this.arrowImage}
-          />
-        ) : (
-          <img
-            className="arrow-image"
-            src={leftArrow}
-            alt="left-arrow"
-            ref={this.arrowImage}
-          />
-        )}
+      <div className="arrow" onClick={this.props.handleClick} style={style}>
+        {<img src={src} alt="right-arrow" className="arrow-image" />}
       </div>
     );
   }
