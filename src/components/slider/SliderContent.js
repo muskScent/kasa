@@ -22,7 +22,6 @@ export default class SliderContent extends Component {
   render() {
     // this.sliderContent.current.style.transition = `transform ease-out ${this.props.transition}s`;
     // this.sliderContent.current.style.width = `${this.props.width}px`;
-    console.log("SliderContent rendered");
 
     return (
       <div className="slider-content" ref={this.sliderContent}>

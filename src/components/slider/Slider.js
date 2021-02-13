@@ -25,6 +25,10 @@ export default class Slider extends Component {
     window.addEventListener("resize", this.handleResize);
   }
 
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.handleResize);
+  }
+
   handleResize = () => {
     this.setState({
       ...this.state,

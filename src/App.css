@@ -2,8 +2,14 @@
 }
 
 .container {
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
+}
+
+@media (max-width: 375px) {
+  .container {
+    width: 96%;
+  }
 }
 
 .main {

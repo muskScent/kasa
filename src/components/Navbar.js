@@ -6,7 +6,7 @@ import Logo from "./Logo";
 export default class Navbar extends Component {
   render() {
     return (
-      <nav className="container">
+      <nav>
         <div>
           <Link to="/">
             <Logo color="#ff6060" />

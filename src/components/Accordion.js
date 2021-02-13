@@ -16,13 +16,13 @@ export default class Accordion extends Component {
     const { isActive } = this.state;
 
     return (
-      <div className="narrow-container">
+      <div style={{ width: `${this.props.width}%` }}>
         <div className="accordion" onClick={this.toggle}>
           <p>{this.props.title}</p>
           <img
             src={`${isActive ? DownArrow : UpArrow}`}
             alt={`${isActive ? "down-arrow" : "up-arrow"}`}
-            className="arrow"
+            className="accordion--arrow"
           />
         </div>
         {isActive && (

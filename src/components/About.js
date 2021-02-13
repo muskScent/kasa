@@ -27,16 +27,48 @@ export default class About extends Component {
           "La sécurité est la priorité de Kasa. Aussi bien pour nos hôtes que pour les voyageurs, chaque logement correspond aux critères de sécurité établis par nos services. En laissant une note aussi bien à l'hôte qu'au locataire, cela permet à nos équipes de vérifier que les standards sont bien respectés. Nous organisons également des ateliers sur la sécurité domestique pour nos hôtes.",
       },
     ],
+    accordionWidth: 85,
+  };
+
+  componentDidMount() {
+    this.handleAccordionWidth();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.adaptAccordionWidth);
+  }
+
+  handleAccordionWidth = () => {
+    this.adaptAccordionWidth();
+
+    window.addEventListener("resize", () => {
+      this.adaptAccordionWidth();
+    });
+  };
+
+  adaptAccordionWidth = () => {
+    if (window.innerWidth <= 375) {
+      this.setState({ ...this.state, accordionWidth: 100 });
+    } else {
+      this.setState({ ...this.state, accordionWidth: 85 });
+    }
   };
   render() {
     return (
-      <div className="container">
+      <>
         <Banner image="../assets/images/moutains.png" />
         {this.state.accordions.map((o, index) => (
-          <Accordion title={o.title} content={o.content} key={index} />
+          <div className="flex-center">
+            <Accordion
+              title={o.title}
+              content={o.content}
+              width={this.state.accordionWidth}
+              key={index}
+            />
+          </div>
         ))}
         <div className="blank"></div>
-      </div>
+      </>
     );
   }
 }

@@ -1,8 +1,3 @@
-.narrow-container {
-  width: 85%;
-  margin: auto;
-}
-
 .accordion {
   display: flex;
   justify-content: space-between;

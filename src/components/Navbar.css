@@ -2,7 +2,8 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
+  /* padding: 15px; */
+  margin: 15px;
 }
 
 .logo {
@@ -13,8 +14,14 @@ nav {
 .nav__links {
   display: flex;
   justify-content: space-between;
-  width: 11rem;
+  width: 176px;
   list-style-type: none;
+}
+
+@media (max-width: 375px) {
+  .nav__links {
+    width: 140px;
+  }
 }
 
 a {
@@ -23,7 +30,7 @@ a {
 
 .nav__links a {
   color: inherit;
-  padding: 5px;
+  /* padding: 5px; */
 }
 
 .is-active {
