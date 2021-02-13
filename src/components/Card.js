@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import RentData from "../data/data.json";
 import Slider from "./slider/Slider";
 import Accordion from "./Accordion";
+import Star from "./Star";
 import "./Card.css";
 
 export default class Card extends Component {
@@ -43,6 +44,8 @@ export default class Card extends Component {
     const cardInfo = RentData.find((o) => o.id === this.props.match.params.id);
     const slides = cardInfo.pictures;
     const host = cardInfo.host;
+    const red = "#FF6060";
+    const grey = "#E3E3E3";
 
     const description = `Vous serez à 50m du canal Saint-martin où vous pourrez pique-niquer l'été et à côté de nombreux bars et restaurants. Au cœur de Paris avec 5 lignes de métro et de nombreux bus. Logement parfait pour les voyageurs en solo et les voyageurs d'affaires. Vous êtes à 1 station de la gare de l'est (7 minutes à pied). `;
 
@@ -53,6 +56,16 @@ export default class Card extends Component {
     Fer à repasser
     Sèche-cheveux
     Cintres`;
+
+    const stars = [];
+
+    for (let i = 0; i < parseInt(cardInfo.rating); i++) {
+      stars.push(<Star color={red} />);
+    }
+
+    for (let i = 0; i < 5 - parseInt(cardInfo.rating); i++) {
+      stars.push(<Star color={grey} />);
+    }
 
     return (
       <>
@@ -69,13 +82,14 @@ export default class Card extends Component {
           </div>
           <div className="card--info--rating">
             <div className="card--info--portrait">
-              <p className="card--info__hostname">Alexandre Dumas</p>
+              <p className="card--info__hostname">{host.name}</p>
               <img
                 src={host.picture}
                 alt="Host portrait"
                 className="circle--img"
               />
             </div>
+            <div className="card--info__stars">{stars}</div>
           </div>
         </div>
         <div className="card--details">
