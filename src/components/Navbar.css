@@ -2,8 +2,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* padding: 15px; */
-  margin: 15px;
+  margin: 15px 0 15px 0;
 }
 
 .logo {
@@ -14,7 +13,7 @@ nav {
 .nav__links {
   display: flex;
   justify-content: space-between;
-  width: 176px;
+  width: 165px;
   list-style-type: none;
 }
 
@@ -30,7 +29,6 @@ a {
 
 .nav__links a {
   color: inherit;
-  /* padding: 5px; */
 }
 
 .is-active {
