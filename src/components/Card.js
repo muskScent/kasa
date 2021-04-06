@@ -14,9 +14,9 @@ export default class Card extends Component {
   };
 
   componentDidMount() {
-    if (
-      RentData.filter((o) => o.id === this.props.match.params.id).length === 0
-    ) {
+    const data = RentData.find((o) => o.id === this.props.match.params.id);
+
+    if (!data) {
       this.props.history.push("/404");
     }
 
@@ -24,7 +24,7 @@ export default class Card extends Component {
     this.setState({
       ...this.state,
       isLoaded: true,
-      data: RentData.find((o) => o.id === this.props.match.params.id),
+      data: data,
     });
   }
 
