@@ -2,12 +2,15 @@ import React, { Component } from "react";
 import RentData from "../data/data.json";
 import Slider from "./slider/Slider";
 import Accordion from "./Accordion";
-import Star from "./Star";
+import Rating from "./Rating";
 import "./Card.css";
 
 export default class Card extends Component {
   state = {
     accordionWidth: 47.5,
+    error: null,
+    isLoaded: false,
+    data: null,
   };
 
   componentDidMount() {
@@ -18,6 +21,11 @@ export default class Card extends Component {
     }
 
     this.handleAccordionWidth();
+    this.setState({
+      ...this.state,
+      isLoaded: true,
+      data: RentData.find((o) => o.id === this.props.match.params.id),
+    });
   }
 
   componentWillUnmount() {
@@ -41,70 +49,61 @@ export default class Card extends Component {
   };
 
   render() {
-    const cardInfo = RentData.find((o) => o.id === this.props.match.params.id);
-    const slides = cardInfo.pictures;
-    const host = cardInfo.host;
-    const red = "#FF6060";
-    const grey = "#E3E3E3";
+    const { error, isLoaded, data } = this.state;
 
-    const description = `Vous serez à 50m du canal Saint-martin où vous pourrez pique-niquer l'été et à côté de nombreux bars et restaurants. Au cœur de Paris avec 5 lignes de métro et de nombreux bus. Logement parfait pour les voyageurs en solo et les voyageurs d'affaires. Vous êtes à 1 station de la gare de l'est (7 minutes à pied). `;
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+      return <div>Loading...</div>;
+    } else {
+      const data = this.state.data;
+      const slides = data.pictures;
+      const host = data.host;
+      const description = data.description;
+      const equipements = data.equipments.map((equipement) => (
+        <div>{equipement}</div>
+      ));
+      const tags = data.tags.map((tag) => (
+        <div className="card--chip">{tag}</div>
+      ));
 
-    const equipements = `Climatisation
-    Wi-Fi
-    Cuisine
-    Espace de travail
-    Fer à repasser
-    Sèche-cheveux
-    Cintres`;
-
-    const stars = [];
-
-    for (let i = 0; i < parseInt(cardInfo.rating); i++) {
-      stars.push(<Star color={red} />);
-    }
-
-    for (let i = 0; i < 5 - parseInt(cardInfo.rating); i++) {
-      stars.push(<Star color={grey} />);
-    }
-
-    return (
-      <>
-        <Slider slides={slides} />
-        <div className="card--info">
-          <div className="card--info--summary">
-            <h2>Cozy loft on the Canal Saint-Martin</h2>
-            <h3>Paris, Île-de-France</h3>
-            <div className="card--info--summary-chips">
-              <div className="card--chip">Cozy</div>
-              <div className="card--chip">Canal</div>
-              <div className="card--chip">Paris 10</div>
+      return (
+        <>
+          <Slider slides={slides} />
+          <div className="card--info">
+            <div className="card--info--summary">
+              <h2>{data.title}</h2>
+              <h3>{data.location}</h3>
+              <div className="card--info--summary-chips">{tags}</div>
+            </div>
+            <div className="card--info--rating">
+              <div className="card--info--portrait">
+                <p className="card--info__hostname">{host.name}</p>
+                <img
+                  src={host.picture}
+                  alt="Host portrait"
+                  className="circle--img"
+                />
+              </div>
+              <div className="card--info__stars">
+                <Rating rating={data.rating} />
+              </div>
             </div>
           </div>
-          <div className="card--info--rating">
-            <div className="card--info--portrait">
-              <p className="card--info__hostname">{host.name}</p>
-              <img
-                src={host.picture}
-                alt="Host portrait"
-                className="circle--img"
-              />
-            </div>
-            <div className="card--info__stars">{stars}</div>
+          <div className="card--details">
+            <Accordion
+              title="Description"
+              content={description}
+              width={this.state.accordionWidth}
+            />
+            <Accordion
+              title="Équipements"
+              content={equipements}
+              width={this.state.accordionWidth}
+            />
           </div>
-        </div>
-        <div className="card--details">
-          <Accordion
-            title="Description"
-            content={description}
-            width={this.state.accordionWidth}
-          />
-          <Accordion
-            title="Équipements"
-            content={description}
-            width={this.state.accordionWidth}
-          />
-        </div>
-      </>
-    );
+        </>
+      );
+    }
   }
 }
