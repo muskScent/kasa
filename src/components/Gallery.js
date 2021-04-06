@@ -10,7 +10,7 @@ export default class Gallery extends Component {
       <div className="gallery">
         {RentData.map((item, index) => (
           <Link to={`/card/${item.id}`} key={index}>
-            <RentItem title={item.title} />
+            <RentItem title={item.title} cover={item.cover} />
           </Link>
         ))}
       </div>
