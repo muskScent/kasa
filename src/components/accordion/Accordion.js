@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Accordion.css";
-import UpArrow from "../assets/images/up-arrow.svg";
-import DownArrow from "../assets/images/down-arrow.svg";
+import UpArrow from "../../assets/images/up-arrow.svg";
+import DownArrow from "../../assets/images/down-arrow.svg";
 
 export default class Accordion extends Component {
   state = { isActive: false };

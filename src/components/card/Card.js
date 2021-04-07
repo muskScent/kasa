@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import RentData from "../data/data.json";
-import Slider from "./slider/Slider";
-import Accordion from "./Accordion";
-import Rating from "./Rating";
+import RentData from "../../data/data.json";
+import Slider from "../slider/Slider";
+import Accordion from "../accordion/Accordion";
+import Rating from "../rating/Rating";
 import "./Card.css";
 
 export default class Card extends Component {

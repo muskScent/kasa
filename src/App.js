@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import "./App.css";
-import Navbar from "./components/Navbar";
-import Home from "./components/Home";
-import About from "./components/About";
 import { Route, Switch, Redirect } from "react-router-dom";
-import NotFound from "./components/NotFound";
-import Footer from "./components/Footer";
-import Card from "./components/Card";
+import "./App.css";
+import Navbar from "./components/navbar/Navbar";
+import Home from "./components/home/Home";
+import About from "./components/about/About";
+import NotFound from "./components/not-found/NotFound";
+import Footer from "./components/footer/Footer";
+import Card from "./components/card/Card";
 
 export default class App extends Component {
   render() {

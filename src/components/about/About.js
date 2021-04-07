@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./About.css";
-import Accordion from "./Accordion";
-import Banner from "./Banner";
+import Accordion from "../accordion/Accordion";
+import Banner from "../banner/Banner";
 
 export default class About extends Component {
   state = {
